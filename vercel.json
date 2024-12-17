@@ -4,6 +4,6 @@
     { "src": "Research-Final-Final-Final-rev/app.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/app.py" }
+    { "src": "/(.*)", "dest": "Research-Final-Final-Final-rev/app.py" }
   ]
 }
