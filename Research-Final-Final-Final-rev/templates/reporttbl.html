@@ -1,0 +1,33 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div>
+<div class="d-flex justify-content-between align-content-center mb-3">
+<div class="h2">Reports</div>
+<div class="p-2"><a class="btn btn-primary" href="{{ url_for('student') }}" role="button">Add Student</a></div>
+</div>
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Details</th>
+            <th scope="col">Value</th>
+            <th scope="col">Status</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reports in report %}
+        <tr>
+            <td>{{ reports['id'] }}</td>
+            <td>{{ reports['query_type'] }}</td>
+            <td>{{ reports['details'] }}</td>
+            <td>{{ reports['query_value'] }}</td>
+            <td>{{ reports['status'] }}</td>
+            <td>{{ reports['timestamp'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div class="mb-4">
+    <h2>Student Information Form</h2>
+    <form id="studentForm" action="{{ url_for('student') }}" method="post" enctype="multipart/form-data" onsubmit="return false;">
+        <!-- Name Field -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="name"  
+                   name="name" 
+                   placeholder="Enter student's name" 
+                   pattern="[A-Za-z\s\-]+" 
+                   title="Only alphabets, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        
+        <!-- Section Field -->
+        <div class="mb-3">
+            <label for="section" class="form-label">Section</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="section" 
+                   name="section" 
+                   placeholder="Enter student's section" 
+                   pattern="[A-Za-z\s\-0-9]+" 
+                   title="Only alphabets, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        
+        <!-- Course Field -->
+        <div class="mb-3">
+            <label for="course" class="form-label">Course</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="course" 
+                   name="course" 
+                   placeholder="Enter student's course" 
+                   pattern="[A-Za-z\s\-0-9]+" 
+                   title="Only alphabets, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        
+        <!-- Year Graduated Field -->
+        <div class="mb-3">
+            <label for="year_graduated" class="form-label">Year Graduated</label>
+            <input type="month" min="2011" max="2099" step="1" value="2025" 
+                   class="form-control" 
+                   id="year_graduated" 
+                   name="year_graduated" 
+                   placeholder="Enter year of graduation" 
+                   min="1900-01" 
+                   max="{{ current_year }}-12"
+                   required>
+        </div>
+        
+        <!-- Awards Field -->
+        <div class="mb-3">
+            <label for="awards" class="form-label">Awards</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="awards" 
+                   name="awards" 
+                   placeholder="Enter any awards received" 
+                   required>
+        </div>
+
+        <!-- Student Number Field -->
+        <div class="mb-3">
+            <label for="stud_num" class="form-label">Student Number</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="stud_num" 
+                   name="stud_num" 
+                   placeholder="Enter student number (e.g., xx-xxxx)" 
+                   required 
+                   pattern="^\d+-\d+$" 
+                   title="Please enter a valid student number (e.g., xx-xxxx)">
+        </div>
+
+        <!-- Image Field -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" 
+                    class="form-control" 
+                    id="image" 
+                    name="image" 
+                    accept=".jpg, .jpeg, .png" 
+                    required>
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal">
+            Submit
+        </button>
+    </form>
+</div>
+
+<!-- Modal for Student Form Confirmation -->
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this student information?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" onclick="document.getElementById('studentForm').submit()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Separator -->
+<hr class="my-4">
+
+<!-- CSV Upload Section -->
+<div class="mb-4">
+    <h2>Upload CSV</h2>
+    <form id="csvForm" action="{{ url_for('student') }}" method="post" enctype="multipart/form-data" onsubmit="return false;">
+        <div class="mb-3">
+            <label for="csvUpload" class="form-label">Upload CSV</label>
+            <input type="file" 
+                   class="form-control" 
+                   id="csvUpload" 
+                   name="file" 
+                   accept=".csv" 
+                   required>
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#csvModal">
+            Upload
+        </button>
+        <a href="{{ url_for('student_template') }}" class="btn btn-secondary">Download Template</a>
+    </form>
+</div>
+
+<!-- Modal for CSV Confirmation -->
+<div class="modal fade" id="csvModal" tabindex="-1" aria-labelledby="csvModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="csvModalLabel">Confirm CSV Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to upload this CSV file?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" onclick="document.getElementById('csvForm').submit()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

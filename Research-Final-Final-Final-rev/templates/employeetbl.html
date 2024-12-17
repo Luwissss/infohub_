@@ -1,0 +1,31 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div>
+    <div class="d-flex justify-content-between align-content-center mb-3">
+    <div class="h2">Employee Data Table</div>
+    <div class="p-2"><a class="btn btn-primary" href="{{ url_for('student') }}" role="button">Add Employee</a></div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Office</th>
+            <th scope="col">Schedule</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employee %}
+        <tr>
+            <td>{{ employee['id'] }}</td>
+            <td>{{ employee['name'] }}</td>
+            <td>{{ employee['position'] }}</td>
+            <td>{{ employee['office'] }}</td>
+            <td>{{ employee['sched'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+                   

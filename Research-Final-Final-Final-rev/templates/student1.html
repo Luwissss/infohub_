@@ -1,0 +1,44 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div class="mb-4">
+    <h2>Student Information Form</h2>
+    <form action="{{ url_for('student') }}" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name"  name="name" placeholder="Enter student's name" required>
+        </div>
+        <div class="mb-3">
+            <label for="section" class="form-label">Section</label>
+            <input type="text" class="form-control" id="section" name="section" placeholder="Enter student's section" required>
+        </div>
+        <div class="mb-3">
+            <label for="course" class="form-label">Course</label>
+            <input type="text" class="form-control" id="course" name="course" placeholder="Enter student's course" required>
+        </div>
+        <div class="mb-3">
+            <label for="year_graduated" class="form-label">Year Graduated</label>
+            <input type="number" class="form-control" id="year_graduated" name="year_graduated" placeholder="Enter year of graduation" required>
+        </div>
+        <div class="mb-3">
+            <label for="awards" class="form-label">Awards</label>
+            <input type="text" class="form-control" id="awards" name="awards" placeholder="Enter any awards received" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Separator -->
+<hr class="my-4">
+
+<!-- Second Form (File Upload CSV) -->
+<div class="mb-4">
+    <h2>Upload CSV</h2>
+    <form action="{{ url_for('student') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="csvUpload" class="form-label">Upload CSV</label>
+            <input type="file" class="form-control" id="csvUpload" accept=".csv" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+{% endblock %}

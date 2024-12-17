@@ -1,0 +1,32 @@
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student ID Card</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="id-card">
+      <div class="row no-gutters">
+        <div class="col-md-4 img-container">
+          <img src="static/graduate.jpg" class="card-img" alt="Student Photo">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2 class="card-title text-center">Student</h2>
+            <p class="card-text"><strong>Name:</strong> {{name}}</p>
+            <p class="card-text"><strong>Year:</strong> {{year}}</p>
+            <p class="card-text"><strong>Motto:</strong> {{motto}}</p>
+            <p class="card-text"><strong>Awards:</strong> {{awards}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock body %}

@@ -1,0 +1,33 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div>
+<div class="d-flex justify-content-between align-content-center mb-3">
+<div class="h2">Student Data Table</div>
+<div class="p-2"><a class="btn btn-primary" href="{{ url_for('student') }}" role="button">Add Student</a></div>
+</div>
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Section</th>
+            <th scope="col">Course</th>
+            <th scope="col">Year Graduated</th>
+            <th scope="col">Awards</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student['id'] }}</td>
+            <td>{{ student['name'] }}</td>
+            <td>{{ student['section'] }}</td>
+            <td>{{ student['course'] }}</td>
+            <td>{{ student['year_graduated'] }}</td>
+            <td>{{ student['awards'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

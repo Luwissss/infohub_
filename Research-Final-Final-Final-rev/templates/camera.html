@@ -1,0 +1,29 @@
+<script>
+
+    var video = document.querySelector("#videoElement");
+    var canvas = document.querySelector("#canvas")
+    
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: {
+        facingMode: 'environment'
+      } })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+    
+    
+    function snapshot(){
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        img = document.getElementById('canvas')
+        var dataURL = img.toDataURL("image/jpeg");
+        console.log(dataURL)
+        document.getElementById("text").value = dataURL;
+        
+    }   
+    </script>
+    </body>
+    </html>

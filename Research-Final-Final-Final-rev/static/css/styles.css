@@ -1,0 +1,59 @@
+/* styles.css */
+.container {
+    margin-top: 20px;
+}
+
+.video-container {
+    border: 3px solid darkgreen;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.login-container,
+.input-container {
+    border: 3px solid darkgreen;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.id-card {
+    border: 2px solid darkgreen;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .img-container {
+    border-right: 2px solid darkgreen;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    color: darkgreen;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .card-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }

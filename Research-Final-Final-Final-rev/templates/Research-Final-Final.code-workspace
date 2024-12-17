@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../Downloads/AR-Examples-master/jsartoolkit5"
+		},
+		{
+			"path": "../../Downloads/AR-Examples-master/threex"
+		},
+		{
+			"path": "../../Downloads/AR-Examples-master/js"
+		}
+	],
+	"settings": {}
+}

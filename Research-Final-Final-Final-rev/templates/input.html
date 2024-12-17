@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md input-container">
+                <div class="d-flex justify-content-between align-items-center my-3">
+                    <h3>Student</h3>
+                    <a href="{{ url_for('home') }}" class="btn btn-outline-success">Home</a>
+                </div>
+                <form action="{{ url_for('input') }}" method="post">
+                    <div class="form-group">
+                        <label for="studentName">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="yearGraduated">Year Graduated</label>
+                        <input type="text" name="year" class="form-control" id="year" placeholder="Enter year graduated">
+                    </div>
+                    <div class="form-group">
+                        <label for="motto">Motto</label>
+                        <input type="text" name="motto" class="form-control" id="motto" placeholder="Enter motto">
+                    </div>
+                    <div class="form-group">
+                        <label for="awards">Awards</label>
+                        <input type="text" name="awards" class="form-control" id="awards" placeholder="Enter awards">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

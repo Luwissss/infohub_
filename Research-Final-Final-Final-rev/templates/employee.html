@@ -1,0 +1,124 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<div class="mb-4">
+    <h2>Employee Information Form</h2>
+    <form id="studentForm" action="{{ url_for('employee') }}" method="post" enctype="multipart/form-data" onsubmit="return false;">
+        <!-- Name Field -->
+        <div class="mb-3">
+            <label for="employeeName" class="form-label">Name</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="employeeName" 
+                   name="name" 
+                   placeholder="Enter employee's name" 
+                   pattern="[A-Za-z\s\-]+" 
+                   title="Only alphabets, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        
+        <!-- Position Field -->
+        <div class="mb-3">
+            <label for="position" class="form-label">Position</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="position" 
+                   name="position" 
+                   placeholder="Enter employee's position" 
+                   pattern="[A-Za-z\s\-]+" 
+                   title="Only alphabets, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        
+        <!-- Office Field -->
+        <div class="mb-3">
+            <label for="office" class="form-label">Office</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="office" 
+                   name="office" 
+                   placeholder="Enter employee's office" 
+                   pattern="[A-Za-z\s\-]+" 
+                   title="Only alphabets, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        
+        <!-- Schedule Field -->
+        <div class="mb-3">
+            <label for="schedule" class="form-label">Schedule</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="schedule" 
+                   name="sched" 
+                   placeholder="Enter employee's schedule" 
+                   pattern="[A-Za-z\s\-0-9]+" 
+                   title="Only alphanumeric characters, spaces, and hyphens are allowed" 
+                   required>
+        </div>
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal">
+            Submit
+        </button>
+    </form>
+</div>
+
+<!-- Modal for Student Form Confirmation -->
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this employee information?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" onclick="document.getElementById('studentForm').submit()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Separator -->
+<hr class="my-4">
+
+<!-- CSV Upload Section -->
+<div class="mb-4">
+    <h2>Upload CSV</h2>
+    <form id="csvForm" action="{{ url_for('employee') }}" method="post" enctype="multipart/form-data" onsubmit="return false;">
+        <div class="mb-3">
+            <label for="csvUpload" class="form-label">Upload CSV</label>
+            <input type="file" 
+                   class="form-control" 
+                   id="csvUpload" 
+                   name="file" 
+                   accept=".csv" 
+                   required>
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#csvModal">
+            Upload
+        </button>
+        <a href="{{ url_for('employee_template') }}" class="btn btn-secondary">Download Template</a>
+    </form>
+</div>
+
+<!-- Modal for CSV Confirmation -->
+<div class="modal fade" id="csvModal" tabindex="-1" aria-labelledby="csvModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="csvModalLabel">Confirm CSV Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to upload this CSV file?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" onclick="document.getElementById('csvForm').submit()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

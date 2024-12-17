@@ -1,0 +1,73 @@
+
+
+Make a new html file and route
+that will be your dashboard
+meron ka side panel
+hindi na nasasara yung side panel
+
+side panel:
+1. View Students
+2. View yung offices
+3. Add bulk csv
+4 add ka ng user
+
+step 1: 
+kailangan mo ayusin yung login para sa dashboard
+-chatgpt the login with verification
+-focus on the database syntax
+
+students table
+-name, section, year graduated, course, awards
+employee table
+-name, office, time, others
+
+add 
+one by one 
+buld add/csv
+
+step 2:
+create AR
+to create ar aralin mo muna yung ar.js tapos
+gawin mo na yung ui
+tapos gawa ka na muna ng model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route('/input', methods=['GET', 'POST'])
+def input():
+    # Check if "username", "password" and "email" POST requests exist (user submitted form)
+    if request.method == 'POST':
+        # Create variables for easy access
+        name = request.form['name']
+        year = request.form['year']
+        motto = request.form['motto']
+        awards = request.form['awards']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('INSERT INTO student VALUES (NULL, %s, %s, %s, %s)', (name, year, motto, awards))
+        mysql.connection.commit()
+        flash("You have successfully registered!", "success")
+        return redirect(url_for('input'))
+
+    elif request.method == 'POST':
+        # Form is empty... (no POST data)
+        flash("Please fill out the form!", "danger")
+    # Show registration form with message (if any)
+    return render_template('input.html')
